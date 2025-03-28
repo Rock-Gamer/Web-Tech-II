@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Book> 
+    <yoga> 
+        <Book_Title> Happy Yoga   </Book_Title> 
+        <Book_Author> Ramdev Baba  </Book_Author> 
+        <Book_Price>  4000  </Book_Price> 
+    </yoga> 
+ 
+    <story> 
+        <Book_Title> Ramayan   </Book_Title> 
+        <Book_Author> Ramanand Sagar  </Book_Author> 
+        <Book_Price>  5000  </Book_Price> 
+    </story> 
+ 
+    <Technical> 
+        <Book_Title> PHP   </Book_Title> 
+        <Book_Author> Gajanan Joshi  </Book_Author> 
+        <Book_Price> 4500   </Book_Price> 
+    </Technical> 
+</Book>
+
+
+
+
+# Import necessary libraries
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Load the dataset
+data = pd.read_csv('student_scores.csv')
+
+# Split the data into input and output variables
+X = data.iloc[:, :-1].values  # All columns except the last
+Y = data.iloc[:, -1].values   # Only the last column
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
+
+# Create the logistic regression model and fit it to the training data
+classifier = LogisticRegression()
+classifier.fit(X_train, y_train)
+
+# Make predictions on the testing set
+y_pred = classifier.predict(X_test)
+
+# Evaluate the model's accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+
+
+
+
+
+
+
+
+
